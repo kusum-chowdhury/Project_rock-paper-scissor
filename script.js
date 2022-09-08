@@ -6,6 +6,7 @@ let computerSelection = getComputerChoice();
 let score = 0;
 let text = document.querySelector('.score-text');
 let whoWon = document.querySelector('.won');
+let h2 = document.querySelector('h2');
 
 // get random choices for computer player
 function getComputerChoice() {
@@ -75,7 +76,9 @@ function getComputerChoice() {
 // if score reaches 5 check who wins
 
 function game() {
+    text.textContent = '';
     whoWon.textContent = '';
+
     playRound(playerSelection, computerSelection);
     if (score === 5) {
         if ( yourScore < computerScore) {
@@ -89,16 +92,20 @@ function game() {
         score = 0;
         yourScore = 0;
         computerScore = 0;
+       
     }
+    
        return;
     }
 
     
  // run game function upon clicking on the buttons
 document.addEventListener('click', function(e) {
+    h2.textContent = '';
    playerSelection = (e.target.value);
    computerSelection = getComputerChoice();
     game();
+    
  });
 
 
