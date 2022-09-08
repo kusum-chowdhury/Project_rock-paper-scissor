@@ -1,66 +1,109 @@
 
-
+let playerSelection;
 let yourScore = 0;
 let computerScore = 0; 
+let computerSelection = getComputerChoice();
+let score = 0;
+let text = document.querySelector('.score-text');
+let whoWon = document.querySelector('.won');
 
+// get random choices for computer player
 function getComputerChoice() {
-    let choices = [
+    const choices = [
         "rock",
         "paper",
         "scissor"
-    ]
-    let compChoice = Math.floor(Math.random() * 3);
+    ] 
+    let compChoice = Math.floor((Math.random() * choices.length));
     return choices[compChoice];
-   
-}
+   }
 
-function playRound(playerSelection, computerSelection) {
-    
-    if (playerSelection == "rock" || playerSelection == "Rock" || playerSelection == "ROCK" && computerSelection == "paper") {
-        computerScore++;
-        return "You Lose! Paper beats Rock";
-    }
-    else if (playerSelection == "paper" || playerSelection == "Paper" || playerSelection == "PAPER" && computerSelection == "rock") {
-        yourScore++;
-        return "You Win! Paper beats Rock";
-    }
-    else if (playerSelection == "scissor" || playerSelection == "Scissor" || playerSelection == "SCISSOR" && computerSelection == "rock") {
-        computerScore++;
-        return "You Lose! Rock beats Scissor";
-    }
-    else if (playerSelection == "rock" || playerSelection == "Rock" || playerSelection == "ROCK" && computerSelection == "scissor") {
-        yourScore++;
-        return "You Win! Rock beats Scissor";
-    }
-    else if (playerSelection == "scissor" || playerSelection == "Scissor" || playerSelection == "SCISOR" && computerSelection == "paper") {
-        yourScore++;
-        return "You Win! Scissor beats Paper";
-    }
-    else if (playerSelection == "paper" || playerSelection == "Paper" || playerSelection == "PAPER" && computerSelection == "scissor") {
-        computerScore++;
-        return "You Lose! Scissor beats Paper";
-    }
-    else {
-        return "Tie! Try again";
-    }
 
-}
 
+// get users choice and computer's choice then returns whoever's win 
+// user wins add 1 in yourScore
+// if computer wins add 1 in computerScore
+// whoevers win add 1 in score
+ function playRound(playerSelection, computerSelection) {
+    if (playerSelection == "rock" && computerSelection == "paper") {
+         computerScore++;
+         score++;
+         text.textContent = '';
+         return text.textContent = "You Lose! Paper beats Rock";
+     }
+     else if (playerSelection == "paper" && computerSelection == "rock") {
+         yourScore++;
+         score++;
+         text.textContent = '';
+         return text.textContent = "You Win! Paper beats Rock";
+     }
+     else if (playerSelection == "scissor" && computerSelection == "rock") {
+         computerScore++;
+         score++;
+         text.textContent = '';
+         return text.textContent = "You Lose! Rock beats Scissor";
+     }
+     else if (playerSelection == "rock" && computerSelection == "scissor") {
+         yourScore++;
+         score++;
+         text.textContent = '';
+         return text.textContent = "You Win! Rock beats Scissor";
+     }
+     else if (playerSelection == "scissor" && computerSelection == "paper") {
+         yourScore++;
+         score++;
+         text.textContent = '';
+         return text.textContent = "You Win! Scissor beats Paper";
+     }
+     else if (playerSelection == "paper" && computerSelection == "scissor") {
+         computerScore++;
+         score++;
+         text.textContent = '';
+         return text.textContent = "You Lose! Scissor beats Paper";
+     }
+     else if (playerSelection == computerSelection) {
+         score++;
+         text.textContent = '';
+         return text.textContent = "Tie! Try again";
+     } 
+ 
+ }
+
+
+
+// run function playround for 5 times
+// if score reaches 5 check who wins
 
 function game() {
+    whoWon.textContent = '';
+    playRound(playerSelection, computerSelection);
+    if (score === 5) {
+        if ( yourScore < computerScore) {
+            whoWon.textContent = "YOU LOSE! TRY AGAIN! ";
+        } else if (yourScore > computerScore){
+            whoWon.textContent = "CONGRATUGLATIONS!! YOU WIN!";
+        } else {
+            whoWon.textContent = '';
+            whoWon.textContent = "ITS A TIE!! TRY AGAIN!";
+        }
+        score = 0;
+        yourScore = 0;
+        computerScore = 0;
+    }
+       return;
+    }
 
-    for (i = 0; i < 5; i++) {
-        let playerSelection = prompt("choose rock paper scissor");
-        let computerSelection = getComputerChoice();
+    
+ // run game function upon clicking on the buttons
+document.addEventListener('click', function(e) {
+   playerSelection = (e.target.value);
+   computerSelection = getComputerChoice();
+    game();
+ });
 
-       console.log(playRound(playerSelection, computerSelection));
-      }
-if (yourScore > 2) {
-    return "You Win!";
-}
-else {
-    return "You lose!";
-}
+
+
    
-}
- 
+
+
+
