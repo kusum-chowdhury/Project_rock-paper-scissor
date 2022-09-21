@@ -3,10 +3,13 @@ let playerSelection;
 let yourScore = 0;
 let computerScore = 0; 
 let computerSelection = getComputerChoice();
-let score = 0;
 let text = document.querySelector('.score-text');
 let whoWon = document.querySelector('.won');
 let h2 = document.querySelector('h2');
+let score = 0;
+let yourScoreDisplay = document.querySelector('.uc');
+let computerChoiceDisplay = document.querySelector('.cc');
+let possibleChoices = document.querySelectorAll("button");
 
 // get random choices for computer player
 function getComputerChoice() {
@@ -29,43 +32,36 @@ function getComputerChoice() {
     if (playerSelection == "rock" && computerSelection == "paper") {
          computerScore++;
          score++;
-         text.textContent = '';
-         return text.textContent = "You Lose! Paper beats Rock";
+         return text.textContent = "You Lost! Paper beats Rock";
      }
      else if (playerSelection == "paper" && computerSelection == "rock") {
          yourScore++;
          score++;
-         text.textContent = '';
          return text.textContent = "You Win! Paper beats Rock";
      }
      else if (playerSelection == "scissor" && computerSelection == "rock") {
          computerScore++;
          score++;
-         text.textContent = '';
-         return text.textContent = "You Lose! Rock beats Scissor";
+         return text.textContent = "You Lost! Rock beats Scissor";
      }
      else if (playerSelection == "rock" && computerSelection == "scissor") {
          yourScore++;
          score++;
-         text.textContent = '';
          return text.textContent = "You Win! Rock beats Scissor";
      }
      else if (playerSelection == "scissor" && computerSelection == "paper") {
          yourScore++;
          score++;
-         text.textContent = '';
          return text.textContent = "You Win! Scissor beats Paper";
      }
      else if (playerSelection == "paper" && computerSelection == "scissor") {
          computerScore++;
          score++;
-         text.textContent = '';
-         return text.textContent = "You Lose! Scissor beats Paper";
+         return text.textContent = "You Lost! Scissor beats Paper";
      }
      else if (playerSelection == computerSelection) {
          score++;
-         text.textContent = '';
-         return text.textContent = "Tie! Try again";
+         return text.textContent = "It's a Draw! Try again";
      } 
  
  }
@@ -76,17 +72,18 @@ function getComputerChoice() {
 // if score reaches 5 check who wins
 
 function game() {
-    text.textContent = '';
+   
     whoWon.textContent = '';
 
     playRound(playerSelection, computerSelection);
+    yourScoreDisplay.textContent = playerSelection;
+    computerChoiceDisplay.textContent = computerSelection;
     if (score === 5) {
         if ( yourScore < computerScore) {
-            whoWon.textContent = "YOU LOSE! TRY AGAIN! ";
+            whoWon.textContent = "YOU LOST! TRY AGAIN! ";
         } else if (yourScore > computerScore){
             whoWon.textContent = "CONGRATUGLATIONS!! YOU WIN!";
         } else {
-            whoWon.textContent = '';
             whoWon.textContent = "ITS A TIE!! TRY AGAIN!";
         }
         score = 0;
@@ -100,13 +97,14 @@ function game() {
 
     
  // run game function upon clicking on the buttons
-document.addEventListener('click', function(e) {
+ possibleChoices.forEach(btn => btn.addEventListener('click', (e) => {
     h2.textContent = '';
-   playerSelection = (e.target.value);
+    playerSelection = (e.target.value);
+   
    computerSelection = getComputerChoice();
-    game();
-    
- });
+     game();
+ }))
+
 
 
 

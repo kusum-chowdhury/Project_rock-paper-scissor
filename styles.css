@@ -1,97 +1,82 @@
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-size: 16px;
-    
 }
 
 body {
-    background-color: white;
-    margin: 0;
+    margin: 0; 
     padding: 0;
-
-    
-   
+    background-color: #2D3032;
+    color: #D2D3D3;
+    font-family: 'Luckiest Guy', cursive;
 }
 h1 {
     font-size: 5rem;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    background-color: #4a536b;
-    display: inline;
-    color: white;
-    border-radius: 5px;
-    padding: 0 1rem;
+    font-family: 'Bungee Spice', cursive;
 }
 .wrapper {
-    background-color: white; 
-    width: 70%;
-    height: 30rem;
-    margin: 4rem auto;
-    padding: 4rem 0 0 0;
-    text-align: center;
-    
-}
-.div-score {
-    height: 60%;
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
     flex-direction: column;
-    color: #4a536b;
-    gap: 1rem;
-    font-family: 'Luckiest Guy', cursive, sans-serif, Arial;
-    margin-top: 3rem;
-   
-}
-.score-text {
-    font-size: 2rem;
-    margin-bottom: 2rem;
+    align-items: center;
+    margin-top: 10%;
+ }
+
+h2 {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 3rem;
+    
 }
 .won {
-    font-size: 2.5rem;
-    
+ margin-top: 2rem;
+ text-align: center;
+ font-size: 2.5rem;
 }
-h2 {
-    text-decoration: underline;
-    font-size: 3rem;
-    margin-bottom: 3rem;
+.score-text {
+    text-align: center;
+    font-size: 2rem;
+   
+} 
+.forscore {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
 }
-.score-text, h2, .won {
-    background-color: #d9e8eb;
+.cc {
+ 
+ left: 15%;
+ top: 50%;
 }
-
+.uc {
+    right: 15%;
+    top: 50%;
+}
+.btn {
+    background-color: #9615DB;
+    color: #D2D3D3;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Luckiest Guy', cursive
+}
 .buttons {
     display: flex;
     justify-content: center;
-    gap: 5rem;
-    background-color: #ff9a8d;
-    height: 40%;
-    align-items: flex-start;
-    border-radius: 10%;
-    padding-top: 2rem;
-
+    gap: 2rem;
 }
-.wrapper2 {
-    background-color: #aed6dc;
-    width: 70%;
-    height: 90%;
-    margin: 0 auto;
-    border-radius: 10%;
-    
+.text-wrapper {
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    height: 10rem;
 }
-.btn {
-    background-color: #4a536b;
-    border: 2px solid #aed6dc;
-    color: white;
-    border-radius: 20px;
-    padding: 2rem 4rem;
-    font-family: 'Luckiest Guy', cursive, sans-serif, Arial;
+.cc, .uc {
+    border: 1px solid #D2D3D3;
+    padding: 2rem;
     font-size: 1.5rem;
+    position: absolute;
+    width: 20rem;
+    text-align: center;
+    border-radius: 15px;
 }
-.btn:hover {
-   background-color: #576280;
-}
-.btn:active {
-    background-color: #4a536b;
-}
+
+
